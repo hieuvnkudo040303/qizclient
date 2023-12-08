@@ -35,6 +35,7 @@ onMounted(() => {
     console.log('data tra loi', dataTraloi.value)
     console.log('data luachon', dataLuachon)
     console.log('data dap an', dataDapan)
+    console.log('current image', currentCauhoi.value.image);
     reset();
   }).catch((err) => {
     console.log(err)
@@ -128,7 +129,8 @@ async function check(index){
   }
 }
 function lamlai(){
-  dataHoanthanh.value.fill(false)
+  dataHoanthanh.value.fill(false);
+  dataLuachon.fill(-1);
   reset();
   axiosClient.post('/traloi', {
     deId : dataGoc.value.id
@@ -141,7 +143,14 @@ function lamlai(){
       .catch(err => console.log(err))
 }
 function ketthuc(){
-  router.push({name : 'taode'});
+  router.push({name : 'danhsachde'});
+}
+function danhgia(){
+  if (dataLuachon.findIndex(item => item === -1) >= 0){
+    alert('Bạn chưa hoàn thành đề, vui lòng hoàn thành để đánh giá chính xác')
+  } else {
+    router.push({name : 'danhgia', params : { id : dataGoc.value.id}})
+  }
 }
 </script>
 <template>
@@ -156,7 +165,10 @@ function ketthuc(){
         <button @click="next" class="rounded bg-black px-2 py-1 text-white">Next</button>
       </div>
       <div class="mb-3">
-        <button @click="lamlai" class="w-full rounded bg-black py-1 text-white">Lam lai</button>
+        <button @click="lamlai" class="w-full rounded bg-black py-1 text-white">Làm lại</button>
+      </div>
+      <div class="mb-3">
+        <button @click="danhgia" class="w-full rounded bg-black py-1 text-white">Đánh giá</button>
       </div>
       <div class="mb-3">
         <button @click="ketthuc" class="w-full rounded bg-black py-1 text-white">Kết thúc</button>
@@ -170,7 +182,12 @@ function ketthuc(){
     </div>
     <div class="max-h-screen w-3/4 overflow-y-auto bg-orange-300 p-3">
       <p class="mb-1 text-xl">Nội dung</p>
-      <div class="mb-3 rounded bg-white p-3 shadow">{{currentCauhoi.noidung}}</div>
+      <div class="mb-3 rounded bg-white p-3 shadow">
+        <p>{{currentCauhoi.noidung}}</p>
+        <div v-if="currentCauhoi.image">
+          <img class="object-cover" :src="currentCauhoi.image">
+        </div>
+      </div>
       <div class="grid grid-cols-2 gap-3">
         <div @click="check(index)" :class="dataColorLuachon[index]" v-for="(item, index) in currentLuaChon" :key="item.id" class="rounded p-3">{{item.noidung}}</div>
       </div>

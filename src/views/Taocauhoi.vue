@@ -39,15 +39,12 @@ const ktCompute = computed(()=>{
   }
 })
 axiosClient.get('/chuong').then(({data}) => {
-  console.log(data);
   listChuong.value = data.data;
 })
 axiosClient.get('/bai').then(({data}) => {
-  console.log(data);
   listBai.value = data.data;
 })
 axiosClient.get('/kienthuc').then(({data}) => {
-  console.log(data);
   listKT.value = data.data;
 })
 function selectFile(e){
@@ -67,9 +64,15 @@ async function handleSubmit(){
       form.append('cauC', result.cauC);
       form.append('cauD', result.cauD);
       form.append('kienthucId', result.kienthucId);
-      form.append('dung', result.dung);
+      form.append('dung', result.dung - 1);
       const {data}= await axiosClient.post('/cauhoi/', form);
-      console.log(data);
+      result.noidung = '';
+      result.cauA = '';
+      result.cauB = '';
+      result.cauC = '';
+      result.cauD = '';
+      result.dung = null;
+      result.image = null;
     } catch(err){
       console.log(err.response);
     }

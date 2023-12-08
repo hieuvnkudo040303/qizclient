@@ -7,6 +7,7 @@ import KiemtraView from "@/views/KiemtraView.vue";
 import {useAuthStore} from "@/stores/auth.js";
 import DanhSachDeView from "@/views/DanhSachDeView.vue";
 import Taocauhoi from "@/views/Taocauhoi.vue";
+import DanhgiaView from "@/views/DanhgiaView.vue";
 
 const router = createRouter({
     history : createWebHistory(),
@@ -43,6 +44,18 @@ const router = createRouter({
                     meta : {requiredAuth : true},
                     name : 'danhsachde',
                     component : DanhSachDeView
+                },
+                {
+                    path : 'danhgia/:id',
+                    meta : {requiredAuth : false},
+                    name : 'danhgia',
+                    component : DanhgiaView,
+                },
+                {
+                    path : 'danhgia',
+                    meta : {requiredAuth : false},
+                    name : 'danhgiaall',
+                    component : DanhgiaView,
                 }
             ]
         },

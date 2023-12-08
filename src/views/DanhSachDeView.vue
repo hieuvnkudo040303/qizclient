@@ -48,7 +48,7 @@ function fTime(str){
         <p>Thời gian tạo : {{fTime(item.created_at)}}</p>
       </div>
     </div>
-    <div v-else >Không có đề nào được tạo</div>s
+    <div v-else >Không có đề nào được tạo</div>
   </div>
 </template>
 

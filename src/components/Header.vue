@@ -7,7 +7,7 @@ const auth = useAuthStore();
 const user = auth.user;
 async function logout(){
   try {
-    await axiosClient.post('/auth/logout', {}, {
+    axiosClient.post('/auth/logout', {}, {
       headers : {
         Authorization : `Bearer ${auth.token}`
       }
@@ -27,7 +27,8 @@ async function logout(){
       <p class="text-3xl font-bold">Logo</p>
       <ul class="flex gap-5">
         <RouterLink :to="{name : 'taode'}" class="cursor-pointer hover:text-white">Tạo đề</RouterLink>
-        <RouterLink :to="{name : 'taode'}" class="cursor-pointer hover:text-white">Đánh giá</RouterLink>
+        <RouterLink :to="{name : 'danhgiaall'}" class="cursor-pointer hover:text-white">Đánh giá tất cả</RouterLink>
+
       </ul>
     </div>
     <div class="flex items-center gap-5">
