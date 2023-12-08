@@ -25,18 +25,16 @@ onMounted(() => {
     }
   }).then(({data}) => {
     dataGoc.value = data.data;
-    console.log(data.data.cauhoi)
     dataTraloi.value.forEach((item, index) => {
-      if(item.luachonId){
-        dataLuachon[index] = dataCauhoi.value[index].luachon.findIndex(i => i.id === item.luachonId);
-      }
+      dataLuachon[index] = dataCauhoi.value[index].luachon.findIndex(i => i.id === item.luachonId);
     })
     dataCauhoi.value.forEach((item, index) => {
       const luachon = item.luachon;
       dataDapan[index] = luachon.findIndex(i => i.status === 1);
     })
-    console.log(dataLuachon)
-    console.log(dataDapan)
+    console.log('data tra loi', dataTraloi.value)
+    console.log('data luachon', dataLuachon)
+    console.log('data dap an', dataDapan)
     reset();
   }).catch((err) => {
     console.log(err)
@@ -91,11 +89,20 @@ function back(){
     reset();
   }
 }
+function step(index){
+  if (index >= 0 && index < dataCauhoi.value.length){
+    dem.value = index;
+  }
+}
 function colorChiso(index){
   if (index === dem.value){
-    return 'bg-blue-300'
+    return 'bg-blue-300';
+  } else if (dataDapan[index] === dataLuachon[index] && dataDapan[index] !== -1){
+    return 'bg-green-300'
+  } else if (dataLuachon[index] !== -1 && dataLuachon[index] !== dataDapan[index]){
+    return 'bg-red-300';
   } else {
-    return 'bg-white'
+    return 'bg-white';
   }
 }
 function getIndexById(id){
@@ -142,7 +149,7 @@ function ketthuc(){
     <div class="max-h-screen w-1/4 bg-yellow-300 p-3">
       <h1 class="mb-3 text-center text-xl">Trạng thái</h1>
       <div class="mb-3">
-        <button :class="colorChiso(index)" v-for="(item, index) in dataCauhoi" class="mb-1 mr-1 h-8 w-8 rounded">{{index+1}}</button>
+        <button @click="step(index)" :class="colorChiso(index)" v-for="(item, index) in dataCauhoi" class="mb-1 mr-1 h-8 w-8 rounded">{{index+1}}</button>
       </div>
       <div class="mb-3 flex justify-between">
         <button @click="back" class="rounded bg-black px-2 py-1 text-white">Back</button>

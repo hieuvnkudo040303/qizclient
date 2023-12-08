@@ -21,7 +21,7 @@ async function handleSubmit(){
       const {data} = await axiosClient.post('/auth/login',{...input});
       auth.setToken(data.token);
       auth.setUser(data.user);
-      await router.push({name: 'taode'});
+      await router.push({name: 'danhsachde'});
     } catch (err){
       if (err.response){
         errMsg.value = err.response.data.message;

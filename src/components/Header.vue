@@ -26,8 +26,8 @@ async function logout(){
     <div class="flex items-center gap-5">
       <p class="text-3xl font-bold">Logo</p>
       <ul class="flex gap-5">
-        <li class="cursor-pointer hover:text-white">Tạo đề</li>
-        <li class="cursor-pointer hover:text-white">Đánh giá</li>
+        <RouterLink :to="{name : 'taode'}" class="cursor-pointer hover:text-white">Tạo đề</RouterLink>
+        <RouterLink :to="{name : 'taode'}" class="cursor-pointer hover:text-white">Đánh giá</RouterLink>
       </ul>
     </div>
     <div class="flex items-center gap-5">

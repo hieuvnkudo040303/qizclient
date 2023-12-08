@@ -6,6 +6,7 @@ import TaodeView from "@/views/TaodeView.vue";
 import KiemtraView from "@/views/KiemtraView.vue";
 import {useAuthStore} from "@/stores/auth.js";
 import DanhSachDeView from "@/views/DanhSachDeView.vue";
+import Taocauhoi from "@/views/Taocauhoi.vue";
 
 const router = createRouter({
     history : createWebHistory(),
@@ -23,6 +24,7 @@ const router = createRouter({
         {
             path:'/',
             component : Layout,
+            redirect : {name : 'danhsachde'},
             children : [
                 {
                     path : 'taode',
@@ -43,6 +45,11 @@ const router = createRouter({
                     component : DanhSachDeView
                 }
             ]
+        },
+        {
+            path : '/taocauhoi',
+            name : 'taocauhoi',
+            component : Taocauhoi
         }
     ]
 })
@@ -51,7 +58,7 @@ router.beforeEach((to, from, next)=>{
     if (to.meta.requiredAuth && !auth.token){
         next({name: 'login'});
     } else if  (auth.token && (to.name === 'login' || to.name === 'signup')) {
-        next({name: 'taode'});
+        next({name: 'danhsachde'});
     } else {
         next();
     }
