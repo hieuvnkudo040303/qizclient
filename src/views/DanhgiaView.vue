@@ -10,7 +10,6 @@ const auth = useAuthStore();
 const dataGoc = ref([]);
 const title = ref('Dang cho');
 const result = ref([]);
-const loikhuyen = ref([]);
 
 onMounted(() => {
   if (!route.params.id){
@@ -83,11 +82,13 @@ function demcau(id, trangthai){
   },0)
 }
 function choloikhuyen(tile){
+  tile = Number(tile);
+  console.log(tile);
   if (tile < 50){
-    return 'Cần cải thiện gấp'
-  } else if (50 <=tile < 70){
-    return 'Tạm ổn cần cải thiện dần'
-  } else if (70 <= tile <= 100){
+    return 'Cải thiện gấp'
+  } else if (tile < 80){
+    return 'Tạm ổn'
+  } else {
     return 'Tốt'
   }
 }
@@ -107,7 +108,7 @@ function choloikhuyen(tile){
           <th class="text-rex-300">Lời khuyên</th>
         </tr>
         </thead>
-        <tbody>s
+        <tbody>
         <tr v-for="(item, index) in result" :key="index">
           <td>{{ item.name }}</td>
           <td>{{ item.socaudung }}</td>

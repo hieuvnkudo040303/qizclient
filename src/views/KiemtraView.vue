@@ -32,10 +32,6 @@ onMounted(() => {
       const luachon = item.luachon;
       dataDapan[index] = luachon.findIndex(i => i.status === 1);
     })
-    console.log('data tra loi', dataTraloi.value)
-    console.log('data luachon', dataLuachon)
-    console.log('data dap an', dataDapan)
-    console.log('current image', currentCauhoi.value.image);
     reset();
   }).catch((err) => {
     console.log(err)

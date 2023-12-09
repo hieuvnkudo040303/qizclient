@@ -143,7 +143,7 @@ async function handleSubmit(){
 
       <div class="flex items-center justify-between">
         <p>Bấm submit để tạo câu hỏi</p>
-        <button @click="handleSubmit" class="rounded bg-black px-3 py-2 text-white">Tao de</button>
+        <button @click="handleSubmit" class="rounded bg-black px-3 py-2 text-white">Tạo câu hỏi</button>
       </div>
     </div>
   </div>
