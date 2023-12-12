@@ -89,13 +89,13 @@ async function handleSubmit(){
         </select>
       </div>
       <div class="mb-3">
-        <p class="mb-1 font-bold">Bai</p>
+        <p class="mb-1 font-bold">Bài</p>
         <select multiple class="h-24 w-full rounded p-2 shadow" v-model="input.inputBai">
           <option v-for="item in baiCompute" :value="item.id">{{item.name}}</option>
         </select>
       </div>
       <div class="mb-3">
-        <p class="mb-1 font-bold">Kien thuc</p>
+        <p class="mb-1 font-bold">Kiến thức</p>
         <select multiple class="h-24 w-full rounded p-2 shadow" v-model="result.kienthucId">
           <option v-for="item in ktCompute" :value="item.id">{{item.name}}</option>
         </select>

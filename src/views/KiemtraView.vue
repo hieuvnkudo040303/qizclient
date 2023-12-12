@@ -150,7 +150,7 @@ function danhgia(){
 }
 </script>
 <template>
-  <div class="flex">
+  <div v-if="dataCauhoi.length > 0" class="flex">
     <div class="max-h-screen w-1/4 bg-yellow-300 p-3">
       <h1 class="mb-3 text-center text-xl">Trạng thái</h1>
       <div class="mb-3">
@@ -187,6 +187,12 @@ function danhgia(){
       <div class="grid grid-cols-2 gap-3">
         <div @click="check(index)" :class="dataColorLuachon[index]" v-for="(item, index) in currentLuaChon" :key="item.id" class="rounded p-3">{{item.noidung}}</div>
       </div>
+    </div>
+  </div>
+  <div v-else>
+    <div class="text-3xl text-center font-bold mt-6">Chưa có câu hỏi cho nội dung này</div>
+    <div class="text-center">
+      <RouterLink class="mx-auto underline text-blue-500 mt-6" :to="{name : 'taode'}">Hãy tạo đề với nội dung khác</RouterLink>
     </div>
   </div>
 </template>

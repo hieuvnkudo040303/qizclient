@@ -33,6 +33,7 @@ onMounted(() => {
             let tile = Number((dung/(dung+sai))*100);
             r.push({
               name : dataGoc.value.filter(i =>i.kienthuc_id === item)[0].name,
+              noidung : dataGoc.value.filter(i =>i.kienthuc_id === item)[0].noidung,
               socaudung : dung,
               socausai : sai,
               tile : tile,
@@ -63,6 +64,7 @@ onMounted(() => {
             let tile = Number((dung/(dung+sai))*100);
             r.push({
               name : dataGoc.value.filter(i =>i.kienthuc_id === item)[0].name,
+              noidung : dataGoc.value.filter(i =>i.kienthuc_id === item)[0].noidung,
               socaudung : dung,
               socausai : sai,
               tile : tile,
@@ -101,16 +103,16 @@ function choloikhuyen(tile){
       <table class="w-full table-auto bg-white border border-collapse border-black overflow-y-autos">
         <thead>
         <tr>
-          <th class="text-blue-500">Ten kien thuc</th>
-          <th class="text-green-500">So cau dung</th>
-          <th class="text-red-500">So cau sai</th>
-          <th class="text-rex-300">Tỉ lệ</th>
+          <th class="text-blue-500">Kiến thức</th>
+          <th class="text-green-500">Số câu đúng</th>
+          <th class="text-red-500">Số câu sai</th>
+          <th class="text-rex-300">Tỉ lệ đúng</th>
           <th class="text-rex-300">Lời khuyên</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="(item, index) in result" :key="index">
-          <td>{{ item.name }}</td>
+          <td>{{ item.name }} : {{item.noidung}}</td>
           <td>{{ item.socaudung }}</td>
           <td>{{ item.socausai }}</td>
           <td>{{ item.tile }}</td>

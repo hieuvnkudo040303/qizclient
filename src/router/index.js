@@ -25,7 +25,7 @@ const router = createRouter({
         {
             path:'/',
             component : Layout,
-            redirect : {name : 'danhsachde'},
+            redirect : {name : 'taode'},
             children : [
                 {
                     path : 'taode',
@@ -47,13 +47,13 @@ const router = createRouter({
                 },
                 {
                     path : 'danhgia/:id',
-                    meta : {requiredAuth : false},
+                    meta : {requiredAuth : true},
                     name : 'danhgia',
                     component : DanhgiaView,
                 },
                 {
                     path : 'danhgia',
-                    meta : {requiredAuth : false},
+                    meta : {requiredAuth : true},
                     name : 'danhgiaall',
                     component : DanhgiaView,
                 }

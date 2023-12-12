@@ -40,7 +40,7 @@ async function handleSubmit(){
 
 <template>
   <div class="mx-auto my-12 w-1/2 rounded bg-yellow-300 p-6">
-    <h1 class="mb-3 text-center text-3xl">Signup</h1>
+    <h1 class="mb-3 text-center text-3xl">Đăng kí</h1>
     <div v-if="errMsg" class="mb-3 rounded bg-red-500 p-3 font-bold text-white">{{errMsg}}</div>
     <form @submit.prevent="handleSubmit">
       <div class="mb-3">

@@ -14,8 +14,8 @@ const input = reactive({
 })
 
 const result = reactive({
-  socau : 10,
-  mucdo : 1,
+  socau : 5,
+  mucdo : 0,
   kts : [],
   namede : '',
 });
@@ -88,15 +88,15 @@ async function handleSubmit(){
         </select>
       </div>
       <div class="mb-3">
-        <p class="mb-1 font-bold">Bai</p>
+        <p class="mb-1 font-bold">Bài</p>
         <select multiple class="h-24 w-full rounded p-2 shadow" v-model="input.inputBai">
-          <option v-for="item in baiCompute" :value="item.id">{{item.name}}</option>
+          <option v-for="item in baiCompute" :value="item.id">{{item.name}}: {{item.noidung}}</option>
         </select>
       </div>
       <div class="mb-3">
-        <p class="mb-1 font-bold">Kien thuc</p>
+        <p class="mb-1 font-bold">Kiến thức</p>
         <select multiple class="h-24 w-full rounded p-2 shadow" v-model="input.inputKT">
-          <option v-for="item in ktCompute" :value="item.id">{{item.name}}</option>
+          <option v-for="item in ktCompute" :value="item.id">{{item.name}}: {{item.noidung}}</option>
         </select>
       </div>
     </div>
@@ -104,7 +104,8 @@ async function handleSubmit(){
       <div class="mb-3">
         <p class="mb-1 font-bold">Số câu hỏi</p>
         <select class="w-full rounded p-1 shadow" v-model="result.socau">
-          <option value="10">10 câu</option>
+          <option value="5">5 câu</option>
+          <option value="10">10câu</option>
           <option value="15">15 câu</option>
           <option value="20">20 câu</option>
           <option value="40">40 câu</option>
@@ -115,9 +116,8 @@ async function handleSubmit(){
       <div class="mb-3">
         <p class="mb-1 font-bold">Mức độ</p>
         <select class="w-full rounded p-1 shadow" v-model="result.mucdo">
-          <option value="1">Dễ</option>
-          <option value="2">Trung bình</option>
-          <option value="3">Khó</option>
+          <option value="0">Dễ</option>
+          <option value="1">Khó</option>
         </select>
       </div>
 
@@ -127,12 +127,12 @@ async function handleSubmit(){
       </div>
 
       <select multiple class="mb-3 w-full h-32 overflow-y-auto rounded bg-white p-2 shadow" v-model="result.kts">
-        <option v-for="item in resultKtCompute"  :value="item.id" class="bg-gray-100 p-1 shadow">{{item.name}}</option>
+        <option v-for="item in resultKtCompute"  :value="item.id" class="bg-gray-100 p-1 shadow">{{item.name}}: {{item.noidung}}</option>
       </select>
 
       <div class="flex items-center justify-between">
         <p>Bấm submit để tạo đề</p>
-        <button @click="handleSubmit" class="rounded bg-black px-3 py-2 text-white">Tao de</button>
+        <button @click="handleSubmit" class="rounded bg-black px-3 py-2 text-white">Tạo đề</button>
       </div>
     </div>
   </div>

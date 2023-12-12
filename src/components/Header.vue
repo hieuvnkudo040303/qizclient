@@ -28,12 +28,12 @@ async function logout(){
       <ul class="flex gap-5">
         <RouterLink :to="{name : 'taode'}" class="cursor-pointer hover:text-white">Tạo đề</RouterLink>
         <RouterLink :to="{name : 'danhgiaall'}" class="cursor-pointer hover:text-white">Đánh giá tất cả</RouterLink>
-
+        <RouterLink :to="{name : 'danhsachde'}" class="cursor-pointer hover:text-white">Danh sách đề đã tạo</RouterLink>
       </ul>
     </div>
     <div class="flex items-center gap-5">
       <p>Chào <strong>{{user.name}}</strong></p>
-      <button @click="logout" class="rounded bg-black px-2 py-1 font-bold text-white">Dang xuat</button>
+      <button @click="logout" class="rounded bg-black px-2 py-1 font-bold text-white">Đăng xuất</button>
     </div>
   </div>
 
